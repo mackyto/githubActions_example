@@ -5,17 +5,21 @@ on:
     branches: [ "nodejs_linter_job" ]
 
 jobs:
-  build:
-    name: linter-execution
+  linter-execution:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
       - name: Linter execution
-        uses: github/super-linter@v6
+        uses: github/super-linter@v4
         env:
           DEFAULT_BRANCH: nodejs_linter_job
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

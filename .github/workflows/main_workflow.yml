@@ -8,11 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
       - name: Linter execution
-        run: github/super-linter@v6
+        uses: github/super-linter@v4
         env:
-          DEFAULT_BRANCH: nodejs_linter_job
+          DEFAULT_BRANCH: nodejs_example
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LINTER_RULES_PATH: /
           JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
